@@ -22,17 +22,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Jhonny</td>
-                    <td>Fialho</td>
-                    <td>jhonnyf@live.com</td>
-                    <td>
-                        <a href="{{ route('user.form') }}"><i class="fas fa-edit"></i></a>
-                        <a href="{{ route('user.status', ['id' => 1]) }}"><i class="far fa-circle"></i> <i class="far fa-dot-circle"></i> </a>
-                        <a href="{{ route('user.destroy', ['id' => 1]) }}"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+                @if ($list->exists())
+                    @foreach ($list->get() as $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->first_name }}</td>
+                            <td>{{ $item->last_name }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>
+                                <a href="{{ route('user.form', ['id' => $item->id]) }}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('user.status', ['id' => $item->id]) }}">{!! $item->active  === 1 ? '<i class="far fa-dot-circle"></i>' : '<i class="far fa-circle"></i>' !!}</a>
+                                <a href="{{ route('user.destroy', ['id' => $item->id]) }}"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="5" class="text-center">Nenhum registro foi encontrado!</td>
+                    </tr>
+                @endif                
             </tbody>            
         </table>
     </div>

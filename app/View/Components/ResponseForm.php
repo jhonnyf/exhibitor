@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Breadcrumbs extends Component
+class ResponseForm extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class Breadcrumbs extends Component
      */
     public function render()
     {
-        return view('components.breadcrumbs');
+        return view('components.response-form');
     }
 }

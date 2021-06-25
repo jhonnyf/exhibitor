@@ -5,30 +5,35 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('user.store') }}" method="post">
+    <h2 class="title-form mb-4">{{ is_null($id) ? 'Criação' : 'Edição' }}</h2>
+
+    <form action="{{ is_null($id) ? route('user.store') : route('user.update', ['id' => $id]) }}" method="post">
+        @if (is_null($id) === false)
+            @method("put")
+        @endif
+        <x-response-form />
+        @csrf
         <input type="hidden" name="id" value="{{ $id }}">
 
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="first_name" class="form-label">Nome</label>
-                    <input type="text" name="first_name" class="form-control">
+                    <input type="text" name="first_name" class="form-control" value="{{ isset($Model) ? $Model->first_name : old('first_name') }}" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="last_name" class="form-label">Sobrenome</label>
-                    <input type="text" name="last_name" class="form-control">
+                    <input type="text" name="last_name" class="form-control" value="{{ isset($Model) ? $Model->last_name : old('last_name') }}" required>
                 </div>
             </div>
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" name="email" class="form-control">
+            <input type="email" name="email" class="form-control" value="{{ isset($Model) ? $Model->email : old('email') }}" required>
         </div>
-
-        <hr>
 
         <div class="row">
             <div class="col-md-6">
@@ -39,8 +44,8 @@
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="password" class="form-label">Confirme sua senha</label>
-                    <input type="password" name="password" class="form-control">
+                    <label for="password_confirmation" class="form-label">Confirme sua senha</label>
+                    <input type="password" name="password_confirmation" class="form-control">
                 </div>
             </div>
         </div>     
