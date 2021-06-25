@@ -1,0 +1,36 @@
+.menu {
+    height: 100vh;
+    background-color: $blue1;
+    padding: 0;
+
+    ul {
+        margin-bottom: 0;
+        padding-left: 0;
+
+        li {
+            list-style: none;
+
+            ul {
+                li {
+                    a {
+                        padding-left: 53px;
+                    }
+                }
+            }
+
+            a {
+                color: #fff;
+                text-decoration: none;
+                display: block;
+                transition: all 0.7s ease;
+                padding: 10px 20px;
+                font-size: 16px;
+
+                &:hover {
+                    background-color: $purple;
+                    transition: all 0.7s ease;
+                }
+            }
+        }
+    }
+}

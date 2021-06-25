@@ -1,0 +1,20 @@
+/**
+ * CONFIG
+ */
+
+@import "config/variables.scss";
+
+/**
+ * SHARED
+ */
+
+@import "shared/header";
+@import "shared/menu";
+@import "shared/content";
+@import "shared/footer";
+
+/**
+ * COMPONENTS
+ */
+
+ @import 'components/breadcrumbs';

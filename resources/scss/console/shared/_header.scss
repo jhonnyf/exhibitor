@@ -1,0 +1,46 @@
+header {
+    background-color: $blue1;
+
+    // .row{
+    //     padding: 13px 0;
+    // }
+
+    .logo {
+        font-size: 30px;
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.7s ease;
+
+            &:hover {
+                opacity: 0.7;
+                transition: all 0.7s ease;
+            }
+        }
+    }
+
+    .actions {
+        text-align: right;
+        font-size: 14px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+
+        .wellcome {
+            color: #fff;
+            margin-right: 15px;
+        }
+
+        .logoff {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.7s ease;
+
+            &:hover {
+                opacity: 0.7;
+                transition: all 0.7s ease;
+            }
+        }
+    }
+}

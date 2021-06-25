@@ -1,0 +1,116 @@
+/**
+ * CONFIG
+ */
+/**
+ * SHARED
+ */
+header {
+  background-color: #313341;
+}
+header .logo {
+  font-size: 30px;
+}
+header .logo a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.7s ease;
+}
+header .logo a:hover {
+  opacity: 0.7;
+  transition: all 0.7s ease;
+}
+header .actions {
+  text-align: right;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+header .actions .wellcome {
+  color: #fff;
+  margin-right: 15px;
+}
+header .actions .logoff {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.7s ease;
+}
+header .actions .logoff:hover {
+  opacity: 0.7;
+  transition: all 0.7s ease;
+}
+
+.menu {
+  height: 100vh;
+  background-color: #313341;
+  padding: 0;
+}
+.menu ul {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.menu ul li {
+  list-style: none;
+}
+.menu ul li ul li a {
+  padding-left: 53px;
+}
+.menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  transition: all 0.7s ease;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.menu ul li a:hover {
+  background-color: #383A59;
+  transition: all 0.7s ease;
+}
+
+main {
+  min-height: 100vh;
+  background-color: #282A36;
+}
+main .content-page {
+  background-color: #fff;
+  border: 1px solid #aaa;
+}
+
+footer {
+  background-color: #313341;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/**
+ * COMPONENTS
+ */
+.breadcrumbs {
+  padding-left: 0;
+  display: flex;
+}
+.breadcrumbs .crumb {
+  color: #fff;
+  list-style: none;
+  margin-right: 0.7rem;
+  transition: all 0.7s ease;
+}
+.breadcrumbs .crumb:after {
+  margin-left: 0.7rem;
+  content: ">";
+}
+.breadcrumbs .crumb:last-child::after {
+  content: none;
+}
+.breadcrumbs .crumb a {
+  color: #fff;
+  text-decoration: none;
+}
+.breadcrumbs .crumb a:hover {
+  opacity: 0.7;
+  transition: all 0.7s ease;
+}

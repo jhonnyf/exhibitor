@@ -1,17 +1,29 @@
 const mix = require('laravel-mix');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
+mix.sass('./resources/scss/console/bootstrap.scss', './public/css/console/bootstrap.css');
+
+/**
+ * VENDOR
+ */
+mix.combine([
+    './public/css/bootstrap.css',    
+    './node_modules/@fortawesome/fontawesome-free/css/all.css',
+], './public/css/console/vendor.css').minify('./public/css/console/vendor.css');
+
+mix.combine([
+    './node_modules/jquery/dist/jquery.js',
+    './node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+], './public/js/console/vendor.js').minify('./public/js/console/vendor.js');
+
+/**
+ * Main
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+ mix.sass('./resources/scss/console/main.scss', './public/css/console/main.css');
+
+
+/**
+ * COPY
+ */
+
+ mix.copyDirectory('./node_modules/@fortawesome/fontawesome-free/webfonts', 'public/css/webfonts');
