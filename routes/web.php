@@ -35,12 +35,12 @@ Route::group(['prefix' => 'console'], function () {
     Route::group(['prefix' => 'user'], function () {
 
         Route::group(['prefix' => 'other'], function () {
-            Route::get('other/{id}', [UserController::class, 'other'])->name('user.other');
+            Route::get('{id}', [UserController::class, 'other'])->name('user.other');
             Route::put('update/{id}', [UserController::class, 'otherUpdate'])->name('user.other-update');
         });
 
         Route::group(['prefix' => 'files'], function () {
-            Route::get('files/{id}', [UserController::class, 'files'])->name('user.files');
+            Route::get('{id}', [UserController::class, 'files'])->name('user.file');
         });
 
         Route::get('', [UserController::class, 'index'])->name('user.index');

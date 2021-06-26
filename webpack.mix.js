@@ -6,7 +6,7 @@ mix.sass('./resources/scss/console/bootstrap.scss', './public/css/console/bootst
  * VENDOR
  */
 mix.combine([
-    './public/css/bootstrap.css',    
+    './public/css/console/bootstrap.css',    
     './node_modules/@fortawesome/fontawesome-free/css/all.css',
 ], './public/css/console/vendor.css').minify('./public/css/console/vendor.css');
 

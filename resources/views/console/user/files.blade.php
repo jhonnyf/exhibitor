@@ -13,14 +13,20 @@
         </div>
         <div class="col-md-10">
             <x-response-form />
-            
-                <p>Arquivos</p>
 
-                <div class="text-end">
-                    <a href="{{ route('user.index', ['user_type_id' => $user_type_id]) }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
-                    
-                </div>
+            <ul class="nav nav-tabs">
+                @foreach ($FilesGalleries as $fileGallery)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $fileGallery->id == request()->get('file_gallery_id') ? 'active' : ''}}" aria-current="page" href="{{ route('user.file', ['id' => $id, 'file_gallery_id' => $fileGallery->id]) }}">{{ $fileGallery->file_gallery }}</a>
+                    </li>                
+                @endforeach                
+            </ul>
             
+            
+
+            <div class="text-end">
+                <a href="{{ route('user.index', ['user_type_id' => $user_type_id]) }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
+            </div>            
         </div>
     </div>
 @endsection

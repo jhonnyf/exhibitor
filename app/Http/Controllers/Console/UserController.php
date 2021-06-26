@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserOtherUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\FileGallery;
 use App\Models\User as Model;
 use App\Models\UserType;
 use Illuminate\Http\Request;
@@ -120,8 +121,9 @@ class UserController extends Controller
     public function files(int $id)
     {
         $data = [
-            'id'    => $id,
-            'Model' => Model::find($id),
+            'id'             => $id,
+            'Model'          => Model::find($id),
+            'FilesGalleries' => FileGallery::where('active', '<>', 2)->get(),
         ];
 
         $data['user_type_id'] = $data['Model']->user_type_id;
