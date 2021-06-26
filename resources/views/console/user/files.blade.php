@@ -22,9 +22,11 @@
                 @endforeach                
             </ul>
             
-            <form action="{{ route('user.upload', ['id' => $id, 'file_gallery_id' => $file_gallery_id]) }}" class="dropzone mt-3 mb-3">
-                @csrf
-            </form>
+            @isset($file_gallery_id)
+                <form action="{{ route('user.upload', ['id' => $id, 'file_gallery_id' => $file_gallery_id]) }}" class="dropzone mt-3 mb-3">
+                    @csrf
+                </form>    
+            @endisset            
 
             <div class="text-end">
                 <a href="{{ route('user.index', ['user_type_id' => $user_type_id]) }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>

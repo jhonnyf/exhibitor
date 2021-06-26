@@ -150,7 +150,7 @@ class UserController extends Controller
             'mime_type'       => $file->getMimeType(),
         ];
 
-        $data['file_path'] = $request->file->store("public/user");
+        $data['file_path'] = $request->file->store("public/user");  
         $data['file_path'] = str_replace("public/", "", $data['file_path']);
 
         $response = File::create($data);
@@ -158,7 +158,7 @@ class UserController extends Controller
         // $this->creteContent($response->id);
 
         $File = File::find($response->id);
-        $File->usersFile()->attach($id);
+        $File->filesUsers()->attach($id);
         
 
         return response()->json($response);

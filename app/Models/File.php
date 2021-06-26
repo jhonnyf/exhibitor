@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'file_gallery_id',
+        'file_path',
+        'original_name',
+        'extension',
+        'size',
+        'mime_type',
+    ];
+
+    public function filesUsers()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }
