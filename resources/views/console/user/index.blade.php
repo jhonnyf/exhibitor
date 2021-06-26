@@ -7,7 +7,7 @@
 @section('content')
     <div class="header">
         <div class="new-register text-end">
-            <a href="{{ route('user.form') }}" class="btn btn-dark"><i class="fas fa-plus"></i> Novo</a>
+            <a href="{{ route('user.form', ['user_type_id' => request()->get('user_type_id')]) }}" class="btn btn-dark"><i class="fas fa-plus"></i> Novo</a>
         </div>
     </div>
     <div class="body">

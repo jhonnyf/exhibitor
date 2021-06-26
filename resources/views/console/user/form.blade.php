@@ -8,13 +8,14 @@
     <h2 class="title-form mb-4">{{ is_null($id) ? 'Criação' : 'Edição' }}</h2>
 
     <x-response-form />
-    <form action="{{ is_null($id) ? route('user.store') : route('user.update', ['id' => $id]) }}" method="post">
+    <form action="{{ is_null($id) ? route('user.store') : route('user.update', ['id' => $id]) }}" method="post" autocomplete="off">
         @csrf
         @if (is_null($id) === false)
             @method("put")
         @endif        
-        
+
         <input type="hidden" name="id" value="{{ $id }}">
+        <input type="hidden" name="user_type_id" value="{{ $user_type_id }}">
 
         <div class="row">
             <div class="col-md-6">
@@ -52,7 +53,7 @@
         </div>     
         
         <div class="text-end">
-            <a href="{{ route('user.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <a href="{{ route('user.index', ['user_type_id' => $user_type_id]) }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
             <button type="submit" class="btn btn-dark"><i class="fas fa-save me-2"></i> Salvar</button>
         </div>
     </form>

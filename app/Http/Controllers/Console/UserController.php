@@ -6,25 +6,33 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User as Model;
+use App\Models\UserType;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $data = [
-            'list' => Model::where('active', '<>', 2)->orderBy('id', 'desc'),
+            'list' => Model::where('active', '<>', 2)
+                ->where('user_type_id', $request->user_type_id)
+                ->orderBy('id', 'desc'),
         ];
 
         return view('console.user.index', $data);
     }
 
-    public function form(int $id = null)
+    public function form(int $id = null, Request $request)
     {
-        $data = ['id' => $id];
+        $data = [
+            'id'           => $id,
+            'user_type_id' => isset($request->user_type_id) ? $request->user_type_id : null,
+        ];
 
         if (is_null($id) === false) {
-            $data['Model'] = Model::find($id);
+            $data['Model']        = Model::find($id);
+            $data['user_type_id'] = $data['Model']->user_type_id;
         }
 
         return view('console.user.form', $data);
@@ -38,7 +46,8 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
         }
 
-        $response = Model::create($data);
+        $UserType = UserType::find($request->user_type_id);
+        $response = $UserType->users()->create($data);
 
         $request->session()->flash('success', 'Ação realizada com sucesso!');
 

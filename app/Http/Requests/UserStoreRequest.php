@@ -15,6 +15,7 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_type_id'          => 'required|exists:users_types,id',
             'first_name'            => 'required',
             'last_name'             => 'required',
             'email'                 => 'required|email:rfc,dns|unique:users',
