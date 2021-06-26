@@ -32,13 +32,23 @@ Route::group(['prefix' => 'console'], function () {
         Route::get('', [DashboardController::class, 'index'])->name('dashboard.index');
     });
 
-    Route::group(['prefix' => 'user'], function(){
-        Route::get('',[UserController::class, 'index'])->name('user.index');
-        Route::get('form/{id?}',[UserController::class, 'form'])->name('user.form');
-        Route::post('store',[UserController::class, 'store'])->name('user.store');
-        Route::put('update/{id}',[UserController::class, 'update'])->name('user.update');
-        Route::get('status/{id}',[UserController::class, 'status'])->name('user.status');
-        Route::get('destroy/{id}',[UserController::class, 'destroy'])->name('user.destroy');
+    Route::group(['prefix' => 'user'], function () {
+
+        Route::group(['prefix' => 'other'], function () {
+            Route::get('other/{id}', [UserController::class, 'other'])->name('user.other');
+            Route::put('update/{id}', [UserController::class, 'otherUpdate'])->name('user.other-update');
+        });
+
+        Route::group(['prefix' => 'files'], function () {
+            Route::get('files/{id}', [UserController::class, 'files'])->name('user.files');
+        });
+
+        Route::get('', [UserController::class, 'index'])->name('user.index');
+        Route::get('form/{id?}', [UserController::class, 'form'])->name('user.form');
+        Route::post('store', [UserController::class, 'store'])->name('user.store');
+        Route::put('update/{id}', [UserController::class, 'update'])->name('user.update');
+        Route::get('status/{id}', [UserController::class, 'status'])->name('user.status');
+        Route::get('destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
 
 });

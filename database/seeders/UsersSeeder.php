@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\UserType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,9 @@ class UsersSeeder extends Seeder
         ];
 
         $UserType = UserType::find(1);
-        $UserType->users()->create($data);
+        $response = $UserType->users()->create($data);
+
+        $User = User::find($response['id']);
+        $User->other()->create(['bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.']);
     }
 }

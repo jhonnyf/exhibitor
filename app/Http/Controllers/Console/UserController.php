@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Console;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserOtherUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User as Model;
@@ -49,6 +50,9 @@ class UserController extends Controller
         $UserType = UserType::find($request->user_type_id);
         $response = $UserType->users()->create($data);
 
+        $User = Model::find($response['id']);
+        $User->other()->create(['bio' => '']);
+
         $request->session()->flash('success', 'Ação realizada com sucesso!');
 
         return redirect()->route('user.form', ['id' => $response['id']]);
@@ -88,5 +92,40 @@ class UserController extends Controller
         $Model->save();
 
         return redirect()->route('user.index');
+    }
+
+    public function other(int $id)
+    {
+        $data = [
+            'id'    => $id,
+            'Model' => Model::find($id),
+        ];
+
+        $data['user_type_id'] = $data['Model']->user_type_id;
+
+        return view('console.user.others', $data);
+    }
+
+    public function otherUpdate(int $id, UserOtherUpdateRequest $request)
+    {
+        $Model = Model::find($id);
+
+        $Model->other->fill($request->all())->save();
+
+        $request->session()->flash('success', 'Ação realizada com sucesso!');
+
+        return redirect()->route('user.other', ['id' => $id]);
+    }
+
+    public function files(int $id)
+    {
+        $data = [
+            'id'    => $id,
+            'Model' => Model::find($id),
+        ];
+
+        $data['user_type_id'] = $data['Model']->user_type_id;
+
+        return view('console.user.files', $data);
     }
 }
