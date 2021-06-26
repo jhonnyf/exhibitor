@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Console;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FileUpload;
 use App\Http\Requests\UserOtherUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\File;
 use App\Models\FileGallery;
 use App\Models\User as Model;
 use App\Models\UserType;
@@ -118,16 +120,74 @@ class UserController extends Controller
         return redirect()->route('user.other', ['id' => $id]);
     }
 
-    public function files(int $id)
+    public function files(int $id, Request $request)
     {
         $data = [
-            'id'             => $id,
-            'Model'          => Model::find($id),
-            'FilesGalleries' => FileGallery::where('active', '<>', 2)->get(),
+            'id'              => $id,
+            'Model'           => Model::find($id),
+            'FilesGalleries'  => FileGallery::where('active', '<>', 2)->get(),
+            'file_gallery_id' => $request->file_gallery_id,
         ];
 
         $data['user_type_id'] = $data['Model']->user_type_id;
 
         return view('console.user.files', $data);
+    }
+
+    public function upload(int $id, int $file_gallery_id, FileUpload $request)
+    {
+        if ($request->hasFile('file') === false) {
+            return response()->isInvalid();
+        }
+
+        $file = $request->file('file');
+
+        $data = [
+            'file_gallery_id' => $file_gallery_id,
+            'original_name'   => $file->getClientOriginalName(),
+            'extension'       => $file->getClientOriginalExtension(),
+            'size'            => round($file->getSize() / 1024 / 1024, 4),
+            'mime_type'       => $file->getMimeType(),
+        ];
+
+        $data['file_path'] = $request->file->store("public/user");
+        $data['file_path'] = str_replace("public/", "", $data['file_path']);
+
+        $response = File::create($data);
+
+        // $this->creteContent($response->id);
+
+        $File = File::find($response->id);
+        $File->usersFile()->attach($id);
+        
+
+        return response()->json($response);
+    }
+
+    private function creteContent(int $id): void
+    {
+        $responseLanguages = Languages::where('active', '<>', 2)
+            ->orderBy('default', 'desc');
+
+        if ($responseLanguages->exists()) {
+            $reference_id = null;
+            foreach ($responseLanguages->get() as $language) {
+                $responseContentFile = Files::find($id)->contents()->create();
+
+                $ContentFile = Files::find($id)
+                    ->contents()
+                    ->where('id', $responseContentFile->id)
+                    ->first();
+
+                $ContentFile->language_id = $language->id;
+                if (is_null($reference_id) === false) {
+                    $ContentFile->reference_id = $reference_id;
+                }
+
+                $ContentFile->save();
+
+                $reference_id = $ContentFile->id;
+            }
+        }
     }
 }

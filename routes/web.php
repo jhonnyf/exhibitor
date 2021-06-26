@@ -41,6 +41,7 @@ Route::group(['prefix' => 'console'], function () {
 
         Route::group(['prefix' => 'files'], function () {
             Route::get('{id}', [UserController::class, 'files'])->name('user.file');
+            Route::post('{id}/{file_gallery_id}', [UserController::class, 'upload'])->name('user.upload');
         });
 
         Route::get('', [UserController::class, 'index'])->name('user.index');
