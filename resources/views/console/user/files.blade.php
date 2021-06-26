@@ -28,7 +28,7 @@
                 </form>    
 
                 <div class="row">
-                    @foreach ($Model->files as $file)
+                    @foreach ($Model->files()->where(['file_gallery_id' => $file_gallery_id])->get() as $file)
                         <div class="col-md-4 mb-3">
                             <div class="file-thumb">
                                 <img src="{{ asset("storage/{$file->file_path}") }}" class="img-fluid img-thumbnail">
