@@ -60,4 +60,24 @@ class UserController extends Controller
 
         return redirect()->route('user.form', ['id' => $id]);
     }
+
+    public function status(int $id)
+    {
+        $Model = Model::find($id);
+
+        $Model->active = $Model->active == 1 ? 0 : 1;
+        $Model->save();
+
+        return redirect()->route('user.index');
+    }
+
+    public function destroy(int $id)
+    {
+        $Model = Model::find($id);
+
+        $Model->active = 2;
+        $Model->save();
+
+        return redirect()->route('user.index');
+    }
 }

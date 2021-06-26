@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
 
             $table->id();
             $table->integer('active')->default(1);
+            $table->foreignId('user_type_id')->references('id')->on('users_types')->cascadeOnDelete();
             $table->string('email')->unique();
             $table->string('first_name');
             $table->string('last_name');
