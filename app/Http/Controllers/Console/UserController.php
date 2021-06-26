@@ -10,6 +10,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\File;
 use App\Models\FileGallery;
 use App\Models\User as Model;
+use App\Models\User;
 use App\Models\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -129,7 +130,7 @@ class UserController extends Controller
             'file_gallery_id' => $request->file_gallery_id,
         ];
 
-        $data['user_type_id'] = $data['Model']->user_type_id;
+        $data['user_type_id'] = $data['Model']->user_type_id;        
 
         return view('console.user.files', $data);
     }

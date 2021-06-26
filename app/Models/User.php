@@ -28,6 +28,11 @@ class User extends Authenticatable
         return $this->belongsTo(UserType::class);
     }
 
+    public function files()
+    {
+        return $this->belongsToMany(File::class);
+    }
+
     public function other()
     {
         return $this->hasOne(UserOther::class);
