@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Console\ContentController;
 use App\Http\Controllers\Console\DashboardController;
 use App\Http\Controllers\Console\FileController;
 use App\Http\Controllers\Console\LoginController;
@@ -53,11 +54,18 @@ Route::group(['prefix' => 'console'], function () {
         Route::get('destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     });
 
-    Route::group(['prefix' => 'file'], function(){
+    Route::group(['prefix' => 'file'], function () {
         Route::get('form/{id}', [FileController::class, 'index'])->name('file.form');
         Route::put('update/{id}', [FileController::class, 'update'])->name('file.update');
         Route::post('status/{id}', [FileController::class, 'status'])->name('file.status');
         Route::post('destroy/{id}', [FileController::class, 'destroy'])->name('file.destroy');
+    });
+
+    Route::group(['prefix' => 'content'], function () {
+        Route::get('', [ContentController::class, 'index'])->name('content.index');
+        Route::get('form/{id?}', [ContentController::class, 'form'])->name('content.form');
+        Route::post('status/{id}', [ContentController::class, 'status'])->name('content.status');
+        Route::post('destroy/{id}', [ContentController::class, 'destroy'])->name('content.destroy');
     });
 
 });
