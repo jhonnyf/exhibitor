@@ -55,6 +55,7 @@ Route::group(['prefix' => 'console'], function () {
 
     Route::group(['prefix' => 'file'], function(){
         Route::get('form/{id}', [FileController::class, 'index'])->name('file.form');
+        Route::put('update/{id}', [FileController::class, 'update'])->name('file.update');
         Route::post('status/{id}', [FileController::class, 'status'])->name('file.status');
         Route::post('destroy/{id}', [FileController::class, 'destroy'])->name('file.destroy');
     });

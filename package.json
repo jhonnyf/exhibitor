@@ -19,6 +19,7 @@
         "sass-loader": "^12.1.0"
     },
     "dependencies": {
+        "@fancyapps/ui": "*",
         "@fortawesome/fontawesome-free": "^5.15.3",
         "bootstrap": "^5.0.2",
         "dropzone": "^5.9.2",

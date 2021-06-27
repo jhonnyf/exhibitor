@@ -10,7 +10,6 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\File;
 use App\Models\FileGallery;
 use App\Models\User as Model;
-use App\Models\User;
 use App\Models\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -130,7 +129,7 @@ class UserController extends Controller
             'file_gallery_id' => $request->file_gallery_id,
         ];
 
-        $data['user_type_id'] = $data['Model']->user_type_id;        
+        $data['user_type_id'] = $data['Model']->user_type_id;
 
         return view('console.user.files', $data);
     }
@@ -151,44 +150,15 @@ class UserController extends Controller
             'mime_type'       => $file->getMimeType(),
         ];
 
-        $data['file_path'] = $request->file->store("public/user");  
+        $data['file_path'] = $request->file->store("public/user");
         $data['file_path'] = str_replace("public/", "", $data['file_path']);
 
         $response = File::create($data);
 
-        // $this->creteContent($response->id);
-
         $File = File::find($response->id);
+        $File->content()->create();
         $File->filesUsers()->attach($id);
-        
 
         return response()->json($response);
-    }
-
-    private function creteContent(int $id): void
-    {
-        $responseLanguages = Languages::where('active', '<>', 2)
-            ->orderBy('default', 'desc');
-
-        if ($responseLanguages->exists()) {
-            $reference_id = null;
-            foreach ($responseLanguages->get() as $language) {
-                $responseContentFile = Files::find($id)->contents()->create();
-
-                $ContentFile = Files::find($id)
-                    ->contents()
-                    ->where('id', $responseContentFile->id)
-                    ->first();
-
-                $ContentFile->language_id = $language->id;
-                if (is_null($reference_id) === false) {
-                    $ContentFile->reference_id = $reference_id;
-                }
-
-                $ContentFile->save();
-
-                $reference_id = $ContentFile->id;
-            }
-        }
     }
 }

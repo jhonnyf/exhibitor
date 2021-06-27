@@ -22,4 +22,9 @@ class File extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+    public function content()
+    {
+        return $this->hasOne(FileContent::class);
+    }
 }

@@ -1,7 +1,19 @@
 import axios from "axios";
-import { easing } from "jquery";
 
 const File = function () {
+
+    const form = function () {
+        let element = $(this);
+
+        Fancybox.show([
+            {
+                src: element.attr('href'),
+                type: "ajax"
+            },
+        ]);
+
+        return false;
+    }
 
     const status = function () {
         let element = $(this);
@@ -34,6 +46,7 @@ const File = function () {
 
     return {
         init: function () {
+            $(document).on('click', '.act-form', form);
             $(document).on('click', '.act-status', status);
             $(document).on('click', '.act-destroy', destroy);
         }
