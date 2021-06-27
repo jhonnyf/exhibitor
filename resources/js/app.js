@@ -1,7 +1,9 @@
+const { File } = require('./components/file');
+
 require('./bootstrap');
 
 function app() {
-
+    File.init();
 }
 
 document.onreadystatechange = function () {

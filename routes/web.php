@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Console\DashboardController;
+use App\Http\Controllers\Console\FileController;
 use App\Http\Controllers\Console\LoginController;
 use App\Http\Controllers\Console\UserController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,12 @@ Route::group(['prefix' => 'console'], function () {
         Route::put('update/{id}', [UserController::class, 'update'])->name('user.update');
         Route::get('status/{id}', [UserController::class, 'status'])->name('user.status');
         Route::get('destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    });
+
+    Route::group(['prefix' => 'file'], function(){
+        Route::get('form/{id}', [FileController::class, 'index'])->name('file.form');
+        Route::post('status/{id}', [FileController::class, 'status'])->name('file.status');
+        Route::post('destroy/{id}', [FileController::class, 'destroy'])->name('file.destroy');
     });
 
 });

@@ -26,15 +26,9 @@
                 <form action="{{ route('user.upload', ['id' => $id, 'file_gallery_id' => $file_gallery_id]) }}" class="dropzone mt-3 mb-3">
                     @csrf
                 </form>    
-
-                <div class="row">
-                    @foreach ($Model->files()->where(['file_gallery_id' => $file_gallery_id])->get() as $file)
-                        <div class="col-md-4 mb-3">
-                            <div class="file-thumb">
-                                <img src="{{ asset("storage/{$file->file_path}") }}" class="img-fluid img-thumbnail">
-                            </div>
-                        </div>
-                    @endforeach
+                
+                <div class="files-list">
+                    <x-files-list :file="$Model->files()" :fileGalleryId="$file_gallery_id" :userId="$Model->id" />
                 </div>
             @endisset            
 

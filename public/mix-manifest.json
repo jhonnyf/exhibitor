@@ -1,10 +1,12 @@
 {
+    "/js/console/main.js": "/js/console/main.js",
     "/css/console/main.css": "/css/console/main.css",
     "/css/console/bootstrap.css": "/css/console/bootstrap.css",
     "/css/console/vendor.css": "/css/console/vendor.css",
     "/css/console/vendor.min.css": "/css/console/vendor.min.css",
     "/js/console/vendor.js": "/js/console/vendor.js",
     "/js/console/vendor.min.js": "/js/console/vendor.min.js",
+    "/js/console/main.min.js": "/js/console/main.min.js",
     "/css/webfonts/fa-brands-400.eot": "/css/webfonts/fa-brands-400.eot",
     "/css/webfonts/fa-brands-400.svg": "/css/webfonts/fa-brands-400.svg",
     "/css/webfonts/fa-brands-400.ttf": "/css/webfonts/fa-brands-400.ttf",

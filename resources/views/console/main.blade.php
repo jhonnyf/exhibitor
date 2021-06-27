@@ -29,5 +29,6 @@
     </main>
     @include('console.shared.footer')
     <script src="{{ asset('js/console/vendor.js') }}"></script> 
+    <script src="{{ asset('js/console/main.js') }}"></script> 
 </body>
 </html>
