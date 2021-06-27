@@ -23,8 +23,8 @@ class File extends Model
         return $this->belongsToMany(User::class)->withTimestamps();
     }
 
-    public function content()
+    public function contents()
     {
-        return $this->hasOne(FileContent::class);
+        return $this->belongsToMany(Content::class)->withTimestamps();
     }
 }

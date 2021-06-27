@@ -13,7 +13,7 @@ class FileController extends Controller
     {
         $data = [
             'id'    => $id,
-            'Model' => Model::find($id)->content,
+            'Model' => Model::find($id)->contents->first(),
         ];
 
         return view('console.file.form', $data);
@@ -23,7 +23,7 @@ class FileController extends Controller
     {
         $File = Model::find($id);
 
-        $File->content->fill($request->all())->save();
+        $File->contents->first()->fill($request->all())->save();
 
         return response()->json([
             'error'   => false,

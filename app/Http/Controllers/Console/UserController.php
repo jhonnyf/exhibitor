@@ -156,7 +156,7 @@ class UserController extends Controller
         $response = File::create($data);
 
         $File = File::find($response->id);
-        $File->content()->create();
+        $File->contents()->create();
         $File->filesUsers()->attach($id);
 
         return response()->json($response);
