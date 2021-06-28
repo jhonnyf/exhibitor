@@ -15,4 +15,9 @@ class Content extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function files()
+    {
+        return $this->belongsToMany(File::class, 'content_file');
+    }
 }

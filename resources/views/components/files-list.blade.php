@@ -1,7 +1,4 @@
-<div class="row">
-    @php
-        $files = $files->where(['file_gallery_id' => $file_gallery_id])->where('active', '<>', 2)->get();
-    @endphp
+<div class="row">  
     @foreach ($files as $file)
         <div class="file col-md-4 mb-3">
             <div class="file-thumb">

@@ -20,11 +20,16 @@ class File extends Model
 
     public function filesUsers()
     {
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_file')->withTimestamps();
+    }
+
+    public function filesContents()
+    {
+        return $this->belongsToMany(Content::class)->withTimestamps();
     }
 
     public function contents()
     {
-        return $this->belongsToMany(Content::class)->withTimestamps();
+        return $this->belongsToMany(Content::class, 'file_content')->withTimestamps();
     }
 }

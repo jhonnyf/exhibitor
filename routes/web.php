@@ -41,11 +41,6 @@ Route::group(['prefix' => 'console'], function () {
             Route::put('update/{id}', [UserController::class, 'otherUpdate'])->name('user.other-update');
         });
 
-        Route::group(['prefix' => 'files'], function () {
-            Route::get('{id}', [UserController::class, 'files'])->name('user.file');
-            Route::post('{id}/{file_gallery_id}', [UserController::class, 'upload'])->name('user.upload');
-        });
-
         Route::get('', [UserController::class, 'index'])->name('user.index');
         Route::get('form/{id?}', [UserController::class, 'form'])->name('user.form');
         Route::post('store', [UserController::class, 'store'])->name('user.store');
@@ -55,6 +50,8 @@ Route::group(['prefix' => 'console'], function () {
     });
 
     Route::group(['prefix' => 'file'], function () {
+        Route::get('gallery/{module}/{id}', [FileController::class, 'gallery'])->name('file.gallery');
+        Route::post('{module}/{id}/{file_gallery_id}', [FileController::class, 'upload'])->name('file.upload');
         Route::get('form/{id}', [FileController::class, 'index'])->name('file.form');
         Route::put('update/{id}', [FileController::class, 'update'])->name('file.update');
         Route::post('status/{id}', [FileController::class, 'status'])->name('file.status');
@@ -64,6 +61,8 @@ Route::group(['prefix' => 'console'], function () {
     Route::group(['prefix' => 'content'], function () {
         Route::get('', [ContentController::class, 'index'])->name('content.index');
         Route::get('form/{id?}', [ContentController::class, 'form'])->name('content.form');
+        Route::post('store', [ContentController::class, 'store'])->name('content.store');
+        Route::put('update/{id}', [ContentController::class, 'update'])->name('content.update');
         Route::post('status/{id}', [ContentController::class, 'status'])->name('content.status');
         Route::post('destroy/{id}', [ContentController::class, 'destroy'])->name('content.destroy');
     });

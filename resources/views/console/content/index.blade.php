@@ -15,9 +15,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>E-mail</th>
+                    <th>Título</th>
                     <th>Ação</th>
                 </tr>
             </thead>

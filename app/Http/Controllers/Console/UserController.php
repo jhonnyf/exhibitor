@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Console;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FileUpload;
 use App\Http\Requests\UserOtherUpdateRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Models\File;
-use App\Models\FileGallery;
 use App\Models\User as Model;
 use App\Models\UserType;
 use Illuminate\Http\Request;
@@ -118,47 +115,5 @@ class UserController extends Controller
         $request->session()->flash('success', 'Ação realizada com sucesso!');
 
         return redirect()->route('user.other', ['id' => $id]);
-    }
-
-    public function files(int $id, Request $request)
-    {
-        $data = [
-            'id'              => $id,
-            'Model'           => Model::find($id),
-            'FilesGalleries'  => FileGallery::where('active', '<>', 2)->get(),
-            'file_gallery_id' => $request->file_gallery_id,
-        ];
-
-        $data['user_type_id'] = $data['Model']->user_type_id;
-
-        return view('console.user.files', $data);
-    }
-
-    public function upload(int $id, int $file_gallery_id, FileUpload $request)
-    {
-        if ($request->hasFile('file') === false) {
-            return response()->isInvalid();
-        }
-
-        $file = $request->file('file');
-
-        $data = [
-            'file_gallery_id' => $file_gallery_id,
-            'original_name'   => $file->getClientOriginalName(),
-            'extension'       => $file->getClientOriginalExtension(),
-            'size'            => round($file->getSize() / 1024 / 1024, 4),
-            'mime_type'       => $file->getMimeType(),
-        ];
-
-        $data['file_path'] = $request->file->store("public/user");
-        $data['file_path'] = str_replace("public/", "", $data['file_path']);
-
-        $response = File::create($data);
-
-        $File = File::find($response->id);
-        $File->contents()->create();
-        $File->filesUsers()->attach($id);
-
-        return response()->json($response);
     }
 }

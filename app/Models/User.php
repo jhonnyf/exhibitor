@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function files()
     {
-        return $this->belongsToMany(File::class);
+        return $this->belongsToMany(File::class, 'user_file');
     }
 
     public function other()

@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFileContent extends Migration
 {
-    
+
     public function up()
     {
-        Schema::create('content_file', function (Blueprint $table) {
+        Schema::create('file_content', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->unsignedBigInteger('file_id');
@@ -23,9 +23,8 @@ class CreateFileContent extends Migration
         });
     }
 
-    
     public function down()
     {
-        Schema::dropIfExists('content_file');
+        Schema::dropIfExists('file_content');
     }
 }

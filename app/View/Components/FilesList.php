@@ -2,21 +2,15 @@
 
 namespace App\View\Components;
 
-use App\Models\File;
 use Illuminate\View\Component;
 
 class FilesList extends Component
 {
     public $files;
-    public $file_gallery_id;
-    public $user_id;
 
-    public function __construct(File $files, int $fileGalleryId, int $userId = null)
+    public function __construct($files)
     {
-
-        $this->files           = $files;
-        $this->file_gallery_id = $fileGalleryId;
-        $this->user_id         = $userId;
+        $this->files = $files;
     }
 
     public function render()
