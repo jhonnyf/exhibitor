@@ -21,10 +21,7 @@ class ContentController extends Controller
             $Category = Category::find($request->category_id);
 
             $data['category_id'] = $Category->id;
-
-            // echo '<pre>';
-            // print_r($Category->contents()->get());
-            // exit();
+            $data['list']        = $Category->categoriesContents()->orderBy('id', 'desc');
         }
 
         return view('console.content.index', $data);
@@ -44,6 +41,12 @@ class ContentController extends Controller
     public function store(ContentStoreRequest $request)
     {
         $response = Model::create($request->all());
+
+        if ($request->category_id) {
+            Model::find($response->id)->categories()->attach($request->category_id);
+        }
+
+        
 
         $request->session()->flash('success', 'Ação realizada com sucesso!');
 

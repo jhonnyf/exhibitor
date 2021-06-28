@@ -16,6 +16,11 @@ class Category extends Model
         return $this->belongsToMany(Content::class)->withTimestamps();
     }
 
+    public function categoriesContents()
+    {
+        return $this->belongsToMany(Content::class, 'content_category')->withTimestamps();
+    }
+
     public function categoryPrimary()
     {
         return $this->belongsToMany(Category::class, 'category_category', 'secondary_id', 'primary_id')->withTimestamps();
