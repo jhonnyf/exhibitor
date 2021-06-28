@@ -12,8 +12,8 @@ class CreateContentFile extends Migration
         Schema::create('content_file', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->unsignedBigInteger('file_id');
             $table->unsignedBigInteger('content_id');
+            $table->unsignedBigInteger('file_id');            
             $table->timestamps();
 
             $table->primary(['file_id', 'content_id']);
