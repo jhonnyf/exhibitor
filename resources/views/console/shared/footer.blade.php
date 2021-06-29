@@ -1,3 +1,0 @@
-<footer>
-    {{ date('Y') }}
-</footer>

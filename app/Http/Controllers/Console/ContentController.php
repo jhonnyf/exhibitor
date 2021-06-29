@@ -35,6 +35,10 @@ class ContentController extends Controller
             'category_id' => $request->category_id,
         ];
 
+        if (is_null($id) === false) {
+            $data['category_id'] = $data['Model']->categories->first()->id;
+        }
+
         return view('console.content.form', $data);
     }
 

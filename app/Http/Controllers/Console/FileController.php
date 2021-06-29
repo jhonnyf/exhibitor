@@ -32,8 +32,9 @@ class FileController extends Controller
         }
 
         if ($module == 'content') {
-            $data['Model']    = Content::find($id);
-            $data['url_back'] = route('content.index', ['category_id' => $request->category_id]);
+            $data['Model']       = Content::find($id);
+            $data['category_id'] = $data['Model']->categories->first()->id;
+            $data['url_back']    = route('content.index', ['category_id' => $data['Model']->categories->first()->id]);
         }
 
         if ($data['file_gallery_id'] > 0) {

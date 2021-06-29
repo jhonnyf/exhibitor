@@ -81,7 +81,7 @@ class UserController extends Controller
         $Model->active = $Model->active == 1 ? 0 : 1;
         $Model->save();
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index', ['user_type_id' => $Model->user_type_id]);
     }
 
     public function destroy(int $id)

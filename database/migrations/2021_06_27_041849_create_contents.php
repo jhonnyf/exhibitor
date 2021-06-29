@@ -14,7 +14,7 @@ class CreateContents extends Migration
 
             $table->id();
             $table->integer('active')->default(1);
-            $table->string('title', 256)->nullable();
+            $table->string('title', 256)->nullable();        
             $table->text('content')->nullable();
             $table->timestamps();
         });
