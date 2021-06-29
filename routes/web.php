@@ -22,7 +22,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'console'], function () {
+Route::group(['prefix' => 'console'], function(){
+    Route::get('login', [LoginController::class, 'index'])->name('login.index');
+    Route::post('auth', [LoginController::class, 'auth'])->name('login.auth');
+    Route::get('logout', [LoginController::class, 'logout'])->name('login.logout');
+});
+
+Route::group(['prefix' => 'console', 'middleware' => 'auth'], function () {
 
     Route::get('logoff', [LoginController::class, 'logoff'])->name('console.logoff');
 
