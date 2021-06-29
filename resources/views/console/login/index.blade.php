@@ -40,7 +40,7 @@
                                                     <i class="icon-dual" data-feather="mail"></i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control @if($errors->has('email')) is-invalid @endif" id="email" placeholder="hello@seventhcode.com" name="email" value="{{ old('email') }}" />
+                                            <input type="email" class="form-control @if($errors->has('email')) is-invalid @endif" id="email" placeholder="hello@gedratecnologia.com.br" name="email" value="{{ old('email') }}" />
 
                                             @if($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">

@@ -2,6 +2,7 @@
 
 @section('css')
     <link href="{{ URL::asset('assets/console/libs/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('assets/console/libs/fancybox/fancybox.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -35,7 +36,7 @@
                         @endforeach                
                     </ul>
                     
-                    @isset($file_gallery_id)
+                    @if(isset($file_gallery_id))
                         <form action="{{ route('file.upload', ['module' => $module, 'id' => $id, 'file_gallery_id' => $file_gallery_id]) }}" method="POST" class="dropzone mt-3 mb-3">
                             @csrf
                             <div class="dz-message needsclick">
@@ -48,6 +49,8 @@
                         <div class="files-list">
                             <x-files-list :files="$files"/>
                         </div>
+                    @else
+                        <p class="text-center">Selecione uma galeria para fazer o upload do seu arquivo</p>
                     @endisset            
 
                     <div class="text-right">
@@ -61,4 +64,10 @@
 
 @section('script')
     <script src="{{ URL::asset('assets/console/libs/dropzone/dropzone.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/console/libs/fancybox/fancybox.min.js') }}"></script>
+@endsection
+
+@section('script-bottom')
+    <script src="{{ URL::asset('assets/console/js/pages/file.init.js') }}"></script>
+    <script src="{{ URL::asset('assets/console/js/pages/form.init.js') }}"></script>
 @endsection

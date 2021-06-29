@@ -111,6 +111,9 @@ var third_party_assets = {
                 "./node_modules/jqvmap/dist/maps/jquery.vmap.usa.js",
             ]
         },
+        {
+            "name": "fancybox", "assets": ["./node_modules/@fancyapps/ui/dist/fancybox.css", "./node_modules/@fancyapps/ui/dist/fancybox.umd.js"]
+        },
     ]
 };
 
@@ -162,6 +165,8 @@ mix.sass('resources/scss/console/app-dark.scss', folder.dist_assets + "css").min
 //copying demo pages related assets
 var app_pages_assets = {
     js: [
+        folder.src + "js/pages/file.init.js",
+        folder.src + "js/pages/form.init.js",
         folder.src + "js/pages/dashboard.init.js",
         folder.src + "js/pages/calendar.init.js",
         folder.src + "js/pages/apexcharts.init.js",

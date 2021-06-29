@@ -1,29 +1,16 @@
-/*
-Template Name: Shreyu - Responsive Bootstrap 4 Admin Dashboard
-Author: CoderThemes
-Version: 1.0.0
-Website: https://coderthemes.com/
-Contact: support@coderthemes.com
-File: Main Js File
-*/
-
-
 !function ($) {
     "use strict";
 
     var Components = function () { };
 
-    //initializing tooltip
     Components.prototype.initTooltipPlugin = function () {
         $.fn.tooltip && $('[data-toggle="tooltip"]').tooltip()
     },
 
-    //initializing popover
     Components.prototype.initPopoverPlugin = function () {
         $.fn.popover && $('[data-toggle="popover"]').popover()
     },
 
-    //initializing Slimscroll
     Components.prototype.initSlimScrollPlugin = function () {
         //You can change the color of scroll bar here
         $.fn.slimScroll && $(".slimscroll").slimScroll({
@@ -35,7 +22,6 @@ File: Main Js File
         });
     },
 
-    //initializing form validation
     Components.prototype.initFormValidation = function () {
         $(".needs-validation").on('submit', function (event) {
             $(this).addClass('was-validated');
@@ -48,9 +34,9 @@ File: Main Js File
         });
     },
 
-    //initilizing
     Components.prototype.init = function () {
         var $this = this;
+
         this.initTooltipPlugin(),
         this.initPopoverPlugin(),
         this.initSlimScrollPlugin(),
@@ -61,7 +47,6 @@ File: Main Js File
 
 }(window.jQuery),
 
-
 function ($) {
     'use strict';
 
@@ -70,9 +55,6 @@ function ($) {
         this.$window = $(window)
     };
 
-    /**
-    Resets the scroll
-    */
     App.prototype._resetSidebarScroll = function () {
         // sidebar - scroll container
         $('.slimscroll-menu').slimscroll({
@@ -85,9 +67,6 @@ function ($) {
         });
     },
 
-    /** 
-     * Initlizes the menu - top and sidebar
-    */
     App.prototype.initMenu = function () {
         var $this = this;
 
@@ -218,9 +197,6 @@ function ($) {
         });
     },
 
-    /** 
-     * Init the layout - with broad sidebar or compact side bar
-    */
     App.prototype.initLayout = function () {
         // in case of small size, add class enlarge to have minimal menu
         if (this.$window.width() >= 768 && this.$window.width() <= 1024) {
@@ -237,13 +213,14 @@ function ($) {
         }
     },
 
-    //initilizing
     App.prototype.init = function () {
         var $this = this;
+
         this.initLayout();
         this.initMenu();
+
         $.Components.init();
-        // on window resize, make menu flipped automatically
+      
         $this.$window.on('resize', function (e) {
             e.preventDefault();
             $this.initLayout();
@@ -256,10 +233,9 @@ function ($) {
 
     $.App = new App, $.App.Constructor = App
 
-
 }(window.jQuery),
-//initializing main application module
+
 function ($) {
     "use strict";
-    $.App.init();
+    $.App.init();    
 }(window.jQuery);

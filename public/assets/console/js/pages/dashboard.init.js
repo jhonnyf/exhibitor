@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -440,86 +440,14 @@ function ($) {
 
 /***/ }),
 
-/***/ "./resources/scss/console/app-dark.scss":
-/*!**********************************************!*\
-  !*** ./resources/scss/console/app-dark.scss ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/scss/console/app-rtl.scss":
-/*!*********************************************!*\
-  !*** ./resources/scss/console/app-rtl.scss ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/scss/console/app.scss":
-/*!*****************************************!*\
-  !*** ./resources/scss/console/app.scss ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/scss/console/bootstrap-dark.scss":
+/***/ 2:
 /*!****************************************************!*\
-  !*** ./resources/scss/console/bootstrap-dark.scss ***!
+  !*** multi ./resources/js/pages/dashboard.init.js ***!
   \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/scss/console/bootstrap.scss":
-/*!***********************************************!*\
-  !*** ./resources/scss/console/bootstrap.scss ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/scss/console/icons.scss":
-/*!*******************************************!*\
-  !*** ./resources/scss/console/icons.scss ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/pages/dashboard.init.js ./resources/scss/console/bootstrap.scss ./resources/scss/console/bootstrap-dark.scss ./resources/scss/console/icons.scss ./resources/scss/console/app-rtl.scss ./resources/scss/console/app.scss ./resources/scss/console/app-dark.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\exhibitor\resources\js\pages\dashboard.init.js */"./resources/js/pages/dashboard.init.js");
-__webpack_require__(/*! C:\wamp64\www\exhibitor\resources\scss\console\bootstrap.scss */"./resources/scss/console/bootstrap.scss");
-__webpack_require__(/*! C:\wamp64\www\exhibitor\resources\scss\console\bootstrap-dark.scss */"./resources/scss/console/bootstrap-dark.scss");
-__webpack_require__(/*! C:\wamp64\www\exhibitor\resources\scss\console\icons.scss */"./resources/scss/console/icons.scss");
-__webpack_require__(/*! C:\wamp64\www\exhibitor\resources\scss\console\app-rtl.scss */"./resources/scss/console/app-rtl.scss");
-__webpack_require__(/*! C:\wamp64\www\exhibitor\resources\scss\console\app.scss */"./resources/scss/console/app.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\exhibitor\resources\scss\console\app-dark.scss */"./resources/scss/console/app-dark.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\exhibitor\resources\js\pages\dashboard.init.js */"./resources/js/pages/dashboard.init.js");
 
 
 /***/ })
