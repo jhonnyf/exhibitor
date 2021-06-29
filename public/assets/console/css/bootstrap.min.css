@@ -12169,6 +12169,14 @@ button:focus {
   width: 30px;
 }
 
+.table .first {
+  width: 100px;
+}
+
+.table .last {
+  width: 150px;
+}
+
 .action-icon {
   color: #6c757d;
   font-size: 1.2rem;

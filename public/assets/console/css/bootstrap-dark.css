@@ -12018,6 +12018,14 @@ button:focus {
   width: 30px;
 }
 
+.table .first {
+  width: 100px;
+}
+
+.table .last {
+  width: 150px;
+}
+
 .action-icon {
   color: #8790a4;
   font-size: 1.2rem;

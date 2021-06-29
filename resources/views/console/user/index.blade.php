@@ -24,11 +24,11 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th class="first">ID</th>
                             <th>Nome</th>
                             <th>Sobrenome</th>
                             <th>E-mail</th>
-                            <th>Ação</th>
+                            <th class="last">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
