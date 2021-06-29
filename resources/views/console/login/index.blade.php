@@ -19,7 +19,7 @@
                                 </div>
 
                                 <h6 class="h5 mb-0 mt-4">Seja Bem Vindo!</h6>
-                                <p class="text-muted mt-1 mb-4">Digite seu endereço de e-mail e senha para acessar o painel de administração.</p>
+                                <p class="text-muted mt-2 mb-4">Digite seu endereço de e-mail e senha para acessar o painel de administração.</p>
 
                                 @if(session('error'))<div class="alert alert-danger">
                                     {{ session('error') }}</div><br>
